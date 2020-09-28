@@ -21,6 +21,8 @@ body {
     height: 80px;
     width: 80px;
     border-radius: 100%;
+    border-color: black;
+    border-width: 5px;
 }
 
 .token.red {
@@ -41,8 +43,14 @@ body {
 }
 
 #fallingBall {
-    position: absolute;
-    left: 50%;
-    top: 5px;
-    transform: translateX(-50%);
+    /*height: 80px;*/
+    /*width: 80px;*/
+    /*border-radius: 100%;*/
+    /*border-color: black;*/
 }
+/*#fallingBall {*/
+/*    position: absolute;*/
+/*    left: 50%;*/
+/*    top: 5px;*/
+/*    transform: translateX(-50%);*/
+/*}*/

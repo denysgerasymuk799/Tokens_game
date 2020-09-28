@@ -37,7 +37,8 @@ let guessed = 0
 let guessedToAll = 0
 let token;
 
-const tokens = [new Token("green", "green"), new Token("red", "red"), new Token("red", "green")]
+const tokens = [new Token("green", "green"), new Token("red", "red"),
+    new Token("red", "green")]
 
 
 function simulateFalling() {
