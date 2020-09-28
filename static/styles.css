@@ -43,8 +43,11 @@ body {
 }
 
 #fallingBall {
-    position: absolute;
-    left: 50%;
-    top: 0px;
-    transform: translateX(-50%);
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*top: 0px;*/
+    /*transform: translateX(-50%);*/
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
 }
