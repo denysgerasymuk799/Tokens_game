@@ -35,14 +35,16 @@ body {
     height: 50vh;
 }
 
-.fallingBallContainer {
-    height: 50vh;
+#fallingBallContainer {
+    height: 500px;
     position: relative;
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
 }
 
 #fallingBall {
     position: absolute;
     left: 50%;
-    top: 5px;
+    top: 0px;
     transform: translateX(-50%);
 }
