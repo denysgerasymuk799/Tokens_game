@@ -29,7 +29,7 @@
                         </div>
                         <div class="row mb-4 align-items-center">
                             <div class="col-3">
-                                <span>Upper side</span>
+                                <span>Upper face</span>
                             </div>
                             <div class="col-3">
                                 <div class="token red"></div>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="row mb-4 align-items-center">
                             <div class="col-3">
-                                <span>Lower side</span>
+                                <span>Lower face</span>
                             </div>
                             <div class="col-3">
                                 <div class="token red"></div>
@@ -67,13 +67,13 @@
                 <div class="gamePlace position-relative">
                     <div id="result" class="d-flex flex-column justify-content-around">
                         <div class="totalTried">
-                            Total tries: <span id="totalTried">0</span> 
+                            Total trials: <span id="totalTried">0</span>
                         </div>
                         <div class="guessed">
-                            Guessed tries: <span id="guessed">0</span> 
+                            Correct guesses: <span id="guessed">0</span>
                         </div>
                         <div class="guessedToAll">
-                            Guessed to all: <span id="guessedToAll">0</span>
+                            Correct to all: <span id="guessedToAll">0</span>
                         </div>
                         <div id="notificationResult">
                             
@@ -84,12 +84,7 @@
                         </div>
                     </div>
 
-                    <div id ="guessProcess" class="fadeIn">
-<!--                        <div id="fallingBallContainer">-->
-<!--                            <div id="fallingBall" class="token">-->
-
-<!--                            </div>-->
-<!--                        </div>-->
+                    <div id ="guessProcess" class="fadeIn gameTable">
                         <div class="table-content ml-5">
                             <div class="row mb-4 ">
                                 <div class="col-3 offset-3">
@@ -104,10 +99,58 @@
                             </div>
                             <div class="row mb-4 align-items-center">
                                 <div class="col-3">
-                                    <span>Upper side</span>
+                                    <span>Upper face</span>
                                 </div>
                                 <div class="col-3">
-                                    <div id="fallingBallUpperFace" class="token"></div>
+                                    <div id="fallingBallUpperFace" class="token white"></div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="token white"></div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="token white"></div>
+                                </div>
+                            </div>
+                            <div class="row mb-4 align-items-center">
+                                <div class="col-3">
+                                    <span>Lower face</span>
+                                </div>
+                                <div class="col-3">
+                                    <div class="token white"></div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="token white"></div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="token white"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="choiceButtons" class="row justify-content-between">
+                            <button class="btn btn-outline-success" id="greenBtn">Green</button>
+                            <button class="btn btn-outline-danger" id='redBtn'>Red</button>
+                        </div>
+                    </div>
+                    <div id="resultTokens" class="fadeIn">
+                        <div class="table-content ml-5">
+                            <div class="row mb-4 ">
+                                <div class="col-3 offset-3">
+                                    <span>First token</span>
+                                </div>
+                                <div class="col-3">
+                                    <span>Second token</span>
+                                </div>
+                                <div class="col-3">
+                                    <span>Third token</span>
+                                </div>
+                            </div>
+                            <div class="row mb-4 align-items-center">
+                                <div class="col-3">
+                                    <span>Upper face</span>
+                                </div>
+                                <div class="col-3">
+                                    <div class="token white"></div>
                                 </div>
                                 <div class="col-3">
                                     <div id="fallingBallUpperFace2" class="token"></div>
@@ -118,7 +161,7 @@
                             </div>
                             <div class="row mb-4 align-items-center">
                                 <div class="col-3">
-                                    <span>Lower side</span>
+                                    <span>Lower face</span>
                                 </div>
                                 <div class="col-3">
                                     <div id="fallingBallLowerFace" class="token"></div>
@@ -131,12 +174,8 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div id="choiceButtons" class="row justify-content-between">
-                            <button class="btn btn-outline-success" id="greenBtn">Green</button>
-                            <button class="btn btn-outline-danger" id='redBtn'>Red</button>
-                        </div>
                     </div>
+
                 </div>
             </div>
         </div>

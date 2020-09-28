@@ -21,6 +21,7 @@ body {
     height: 80px;
     width: 80px;
     border-radius: 100%;
+    border: 0.2em solid #000000;
 }
 
 .token.red {
@@ -29,6 +30,10 @@ body {
 
 .token.green {
     background-color: green;
+}
+
+.token.white {
+    background-color: white;
 }
 
 #result {
@@ -50,4 +55,8 @@ body {
     height: 80px;
     width: 80px;
     border-radius: 100%;
+}
+
+.gameTable{
+    top: 30%
 }
