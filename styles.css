@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    font-weight: 700;
+}
+
+
+.fadeIn {
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    position: absolute;
+}
+
+.token {
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+}
+
+.token.red {
+    background-color: red;
+}
+
+.token.green {
+    background-color: green;
+}
+
+#result {
+    height: 50vh;
+}
+
+.fallingBallContainer {
+    height: 50vh;
+    position: relative;
+}
+
+#fallingBall {
+    position: absolute;
+    left: 50%;
+    top: 5px;
+    transform: translateX(-50%);
+}
