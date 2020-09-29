@@ -137,6 +137,9 @@ function getRandomToken(tokens) {
     token2 = tokens[(random + 1) % tokens.length]
     token3 = tokens[(random + 2) % tokens.length]
 
+    // At chance 0.5 to swap sides
+    token.flipToken()
+
     // Add to DOM
     removePreviousColors(ballToShow)
     ballToShow.classList.add(token.upperFace)
