@@ -34,6 +34,10 @@ const resultTokens = document.getElementById("resultTokens")
 const falling = document.getElementById("guessProcess")
 
 // balls to show other tokens, when first is randomly chosen
+
+// This one is in guessToken (one coloroud among 6)
+const ballToShow = document.getElementById("ballToShow")
+// These will be portrayed in resultTokens container
 const ballUpperFace = document.getElementById("fallingBallUpperFace")
 const ballLowerFace = document.getElementById("fallingBallLowerFace")
 const ballUpperFace2 = document.getElementById("fallingBallUpperFace2")
@@ -41,7 +45,7 @@ const ballLowerFace2 = document.getElementById("fallingBallLowerFace2")
 const ballUpperFace3 = document.getElementById("fallingBallUpperFace3")
 const ballLowerFace3 = document.getElementById("fallingBallLowerFace3")
 
-const ballsColors = ['red', 'green'];
+const ballsColors = ['red', 'green', 'white'];
 const ballsFaces = [
     ballUpperFace, ballLowerFace,
     ballUpperFace2, ballLowerFace2,
@@ -61,25 +65,28 @@ const tokens = [new Token("green", "green"),
 let pageShowTokens = [new Token("white", "white"),
     new Token("white", "white"), new Token("white", "white")]
 
-
+let tokensInOrder;
 // Initiate variables for ball movement animation
 let token, token2, token3, speed = 0, opposite = false, gravity = 4, distance = 0
  // container = document.getElementById("fallingBallContainer"), limit = container.clientHeight - ballUpperFace.clientHeight;
 
 function setTokenToColorFromRandom(){
     // Iterate from 2, because first token colors for both faces you already set
-    let j = 1
-    for (let i = 1; i < pageShowTokens.length; i++) {
-        j = j + 1
+    let j = -1
+    for (let i = 0; i < pageShowTokens.length; i++) {
+        j++
+        if (j === 0){
+            console.log(ballsFaces[j])
+        }
         ballsFaces[j].classList.add(pageShowTokens[i].upperFace)
-        j = j + 1
+        j++
         ballsFaces[j].classList.add(pageShowTokens[i].lowerFace)
     }
 }
 
 function updateStatistics(token, choice){
     const userCorrect = match(token, choice)
-    console.log("after match")
+    // console.log("after match")
 
     if (userCorrect) {
         guessedField.innerHTML = ++guessed
@@ -87,7 +94,7 @@ function updateStatistics(token, choice){
     } else {
         notification.innerHTML = "Wrong trial :("
     }
-    console.log("after if")
+    // console.log("after if")
 
     totalTriedField.innerHTML = ++totalTries
     guessedToAll = guessed / totalTries
@@ -97,38 +104,19 @@ function updateStatistics(token, choice){
 // Logic of guess
 function game(token, choice) {
     console.log("start game")
-    ballLowerFace.classList.remove("green")
-    ballLowerFace.classList.remove("red")
-    ballLowerFace.classList.add(pageShowTokens[0].lowerFace)
+    ballsFaces.forEach(tok => {removePreviousColors(tok)})
     setTokenToColorFromRandom()
-
-    // add and remove fadeIn to replace other white tokens on result colored tokens
-    // after click on Green or Red button
-    falling.classList.add("fadeIn")
-    resultTokens.classList.remove("fadeIn")
-
-    // set timeout to show user the result tokens
-    let intervalID = 0;
-    while (intervalID < 50000){
-        intervalID = setTimeout(setTimer, 1000)
-        console.log("interval2", intervalID)
-    }
-    resultTokens.classList.add("fadeIn")
-
     updateStatistics(token, choice)
 }
 
 // Check if token's lower face matches with user guess
 function match(token, userChoice) {
-    console.log("start match")
-    console.log(token)
+    // console.log("start match")
+    // console.log(token)
 
     return token.lowerFace === userChoice
 }
 
-function setTimer(){
-    console.log("Run delay timer")
-}
 
 function removePreviousColors(token){
     // Remove previously set colors
@@ -138,30 +126,26 @@ function removePreviousColors(token){
 }
 
 function setTokenToWhite(token){
+    removePreviousColors(token)
     token.classList.add('white')
 }
 
 // Randommly choose one out of three tokens
 function getRandomToken(tokens) {
-    ballsFaces.forEach(removePreviousColors)
-    ballsFaces.forEach(setTokenToWhite)
-    ballUpperFace.classList.remove('white')
-
     // Chose random token
     random = Math.floor(Math.random()*tokens.length)
-    const token = tokens[random]
+    token = tokens[random]
 
     // save positions of other tokens after random function
-    console.log("random", random)
-    const token2 = tokens[(random + 1) % tokens.length]
-    const token3 = tokens[(random + 2) % tokens.length]
-    console.log("rand", token2, token3)
+    // console.log("random", random)
+    token2 = tokens[(random + 1) % tokens.length]
+    token3 = tokens[(random + 2) % tokens.length]
+    // console.log("rand", token2, token3)
 
-    // At chance 0.5 to swap sides
-    token.flipToken()
 
     // Add to DOM
-    ballUpperFace.classList.add(token.upperFace)
+    removePreviousColors(ballToShow)
+    ballToShow.classList.add(token.upperFace)
     pageShowTokens = [token, token2, token3]
 
     return {token, token2, token3}
@@ -198,11 +182,8 @@ redBtn.addEventListener("click", () => {
 
 greenBtn.addEventListener("click", () => {
     game(token, "green")
-    console.log("after green game")
+    // console.log("after green game")
 
-    ballUpperFace.style.top = "5px"
-    ballUpperFace2.style.top = "5px"
-    ballUpperFace3.style.top = "5px"
 
     result.classList.remove("fadeIn")
     falling.classList.add("fadeIn")
@@ -211,18 +192,12 @@ greenBtn.addEventListener("click", () => {
 againBtn.addEventListener("click", () => {
     // prepare random token before start
     const tokensInOrder = getRandomToken(tokens)
-    console.log("againBtn0", tokensInOrder)
+    // console.log("againBtn0", tokensInOrder)
     token = tokensInOrder["token"]
     token2 = tokensInOrder["token2"]
     token3 = tokensInOrder["token3"]
-    console.log("againBtn", token, token2, token3)
+    // console.log("againBtn", token, token2, token3)
 
-    // reset ball postion
-    ballUpperFace.style.top = "0px"
-    ballUpperFace2.style.top = "0px"
-    ballUpperFace3.style.top = "0px"
-
-    // requestAnimationFrame(simulateFalling)
     result.classList.add("fadeIn")
     falling.classList.remove("fadeIn")
 })
