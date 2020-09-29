@@ -59,13 +59,16 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <button class="btn btn-outline-success btn-block" type="button" id="startBtn">Start</button>
+                        <button class="btn btn-outline-success btn-block btnFont" type="button" id="startBtn">Start</button>
                     </div>
                 </div>
             </div>
             <div class="gameScreen fadeIn">
-                <div class="gamePlace position-relative">
-                    <div id="result" class="d-flex flex-column justify-content-around">
+                <div class="gamePlace">
+                    <div id="result" class="d-flex flex-column ml-5 mt-5 gameStatistics">
+                        <div id="notificationResult" class="notificationColor">
+
+                        </div>
                         <div class="totalTried">
                             Total trials: <span id="totalTried">0</span>
                         </div>
@@ -73,19 +76,19 @@
                             Correct guesses: <span id="guessed">0</span>
                         </div>
                         <div class="guessedToAll">
-                            Correct to all: <span id="guessedToAll">0</span>
+                            Correct to all: <span id="guessedToAll">0%</span>
                         </div>
-                        <div id="notificationResult">
-                            
-                        </div>
-                        <div id="resultButtons" class="row justify-content-around">              
-                            <button class="btn btn-outline-success" id="againBtn">Toss</button>
-                            <button class="btn btn-outline-danger" id="quitBtn" >Quit</button>
+                        <div id="resultButtons" class="row justify-content-around mt-5">
+                            <button class="btn btn-outline-success btnFont" id="againBtn">Toss</button>
+                            <button class="btn btn-outline-danger btnFont" id="quitBtn" >Quit</button>
                         </div>
                     </div>
 
-                    <div id ="guessProcess" class="fadeIn gameTable">
-                        <div class="table-content ml-5">
+                    <div id ="guessProcess" class="fadeIn">
+                        <div class="row justify-content-center mt-5">
+                            <h3>Guess a color of the lower face of the first token</h3>
+                        </div>
+                        <div class="table-content ml-5 mt-5">
                             <div class="row mb-4 ">
                                 <div class="col-3 offset-3">
                                     <span>First token</span>
@@ -128,8 +131,8 @@
                         </div>
 
                         <div id="choiceButtons" class="row justify-content-around">
-                            <button class="btn btn-outline-success" id="greenBtn">Green</button>
-                            <button class="btn btn-outline-danger" id='redBtn'>Red</button>
+                            <button class="btn btn-outline-success btnFont" id="greenBtn">Green</button>
+                            <button class="btn btn-outline-danger btnFont" id='redBtn'>Red</button>
                         </div>
                     </div>
                     <div id="resultTokens" class="modal fade" role="dialog">

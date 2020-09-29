@@ -37,6 +37,7 @@ const falling = document.getElementById("guessProcess")
 
 // This one is in guessToken (one coloroud among 6)
 const ballToShow = document.getElementById("ballToShow")
+
 // These will be portrayed in resultTokens container
 const ballUpperFace = document.getElementById("fallingBallUpperFace")
 const ballLowerFace = document.getElementById("fallingBallLowerFace")
@@ -68,7 +69,6 @@ let pageShowTokens = [new Token("white", "white"),
 let tokensInOrder;
 // Initiate variables for ball movement animation
 let token, token2, token3, speed = 0, opposite = false, gravity = 4, distance = 0
- // container = document.getElementById("fallingBallContainer"), limit = container.clientHeight - ballUpperFace.clientHeight;
 
 function setTokenToColorFromRandom(){
     // Iterate from 2, because first token colors for both faces you already set
@@ -86,7 +86,6 @@ function setTokenToColorFromRandom(){
 
 function updateStatistics(token, choice){
     const userCorrect = match(token, choice)
-    // console.log("after match")
 
     if (userCorrect) {
         guessedField.innerHTML = ++guessed
@@ -94,11 +93,11 @@ function updateStatistics(token, choice){
     } else {
         notification.innerHTML = "Wrong trial :("
     }
-    // console.log("after if")
+    notification.classList.add('pb-4')
 
     totalTriedField.innerHTML = ++totalTries
-    guessedToAll = guessed / totalTries
-    guessedToAllField.innerHTML = guessedToAll
+    guessedToAll = Math.round(guessed / totalTries * 10000) / 100
+    guessedToAllField.innerHTML = guessedToAll + '%'
 }
 
 // Logic of guess
@@ -111,8 +110,6 @@ function game(token, choice) {
 
 // Check if token's lower face matches with user guess
 function match(token, userChoice) {
-    // console.log("start match")
-    // console.log(token)
 
     return token.lowerFace === userChoice
 }
@@ -137,11 +134,8 @@ function getRandomToken(tokens) {
     token = tokens[random]
 
     // save positions of other tokens after random function
-    // console.log("random", random)
     token2 = tokens[(random + 1) % tokens.length]
     token3 = tokens[(random + 2) % tokens.length]
-    // console.log("rand", token2, token3)
-
 
     // Add to DOM
     removePreviousColors(ballToShow)
@@ -163,6 +157,7 @@ startBtn.addEventListener("click", () => {
 quitBtn.addEventListener("click", () => {
     startScreen.classList.remove("fadeIn")
     gameScreen.classList.add("fadeIn")
+    notification.classList.remove('pb-4')
 
     // Reset all data
     guessed = 0
@@ -182,8 +177,6 @@ redBtn.addEventListener("click", () => {
 
 greenBtn.addEventListener("click", () => {
     game(token, "green")
-    // console.log("after green game")
-
 
     result.classList.remove("fadeIn")
     falling.classList.add("fadeIn")
@@ -192,11 +185,9 @@ greenBtn.addEventListener("click", () => {
 againBtn.addEventListener("click", () => {
     // prepare random token before start
     const tokensInOrder = getRandomToken(tokens)
-    // console.log("againBtn0", tokensInOrder)
     token = tokensInOrder["token"]
     token2 = tokensInOrder["token2"]
     token3 = tokensInOrder["token3"]
-    // console.log("againBtn", token, token2, token3)
 
     result.classList.add("fadeIn")
     falling.classList.remove("fadeIn")
