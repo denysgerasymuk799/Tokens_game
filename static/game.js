@@ -91,7 +91,7 @@ function updateStatistics(token, choice){
         guessedField.innerHTML = ++guessed
         notification.innerHTML = "You are right !!!"
     } else {
-        notification.innerHTML = "Wrong trial :("
+        notification.innerHTML = "Wrong guess :("
     }
     notification.classList.add('pb-4')
 
